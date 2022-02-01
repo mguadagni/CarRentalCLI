@@ -1,5 +1,7 @@
 package com.careerdevs.ui;
 
+import com.careerdevs.RentalService;
+
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
@@ -19,12 +21,17 @@ public class UserInput {
 
     }
 
-    public static int readInt (String question) {
+    public static int readInt (String question, int min, int max) {
         while (true) {
 
             try {
                 System.out.println(question + "\nSelection: ");
-                return scanner.nextInt();
+                int userSelect = scanner.nextInt();
+                if (userSelect >= min && userSelect <= max) {
+                    return userSelect;
+                }
+                System.out.println("Number must be in the range (" + min + "-" + max + ")");
+
             } catch (InputMismatchException e) {
                 System.out.println("You must enter an integer, try again");
                 scanner.nextLine();

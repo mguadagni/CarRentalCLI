@@ -33,11 +33,11 @@ public class RentalService {
 
         }
 
-
-        int userSelection = UserInput.readInt("Enter a number to select the car you'd like to rent:");
+        int userSelection = UserInput.readInt("Enter a number to select the car you'd like to rent:", 1, 3);
         carStorage[userSelection - 1].setRented(true);
         System.out.println("Thank you! You are now renting the " + carStorage[userSelection - 1].getMake() + " " +
                 carStorage[userSelection - 1].getModel());
+
 
 
     }
