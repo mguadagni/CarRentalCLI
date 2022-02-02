@@ -2,6 +2,12 @@ package com.careerdevs;
 
 import com.careerdevs.ui.UserInput;
 
+//need to create separate methods and call them within main
+//mainMenu()
+//rentACar()
+//returnACar()
+//exitProgram()
+
 public class RentalService {
     public static void main(String[] args) {
         System.out.println("Welcome to Michael's Car Rental Service!");

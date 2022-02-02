@@ -31,4 +31,12 @@ public class Car {
         isRented = rented;
     }
 
+    @Override
+    public String toString() {
+        return "Car{" +
+                "make='" + make + '\'' +
+                ", model='" + model + '\'' +
+                ", isRented=" + isRented +
+                '}';
+    }
 }
