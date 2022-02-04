@@ -23,7 +23,7 @@ public class UI {
         while (true) {
 
             try {
-                System.out.println(question + "\nSelect a Number (" + min + " - " + max + "):");
+                System.out.println(question + "Select a Number (" + min + " - " + max + "):");
                 int userSelect = scanner.nextInt();
                 if (userSelect >= min && userSelect <= max) {
                     return userSelect;

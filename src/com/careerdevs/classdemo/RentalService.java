@@ -51,6 +51,8 @@ public class RentalService {
         String selectedCar = availableCars.get(userSelection-1).getName();
         System.out.println("You are now renting the " + selectedCar);
         availableCars.get(userSelection-1).setRented(true);
+        System.out.println("Now bringing you back to the main menu...\n");
+        mainMenu();
     }
 
     private static void initializeCarStorage () {
@@ -99,6 +101,8 @@ public class RentalService {
         String selectedCar = rentedCars.get(userSelection-1).getName();
         System.out.println("You have now returned the " + selectedCar);
         rentedCars.get(userSelection-1).setRented(false);
+        System.out.println("Now bringing you back to the main menu...");
+        mainMenu();
     }
 
 }
