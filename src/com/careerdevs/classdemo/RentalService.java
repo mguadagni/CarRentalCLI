@@ -57,9 +57,9 @@ public class RentalService {
         carStorage = new ArrayList<>();
 
         Car car1 = new Car("Honda", "Accord", false);
-        Car car2 = new Car("Chevy", "Cruze", true);
+        Car car2 = new Car("Chevy", "Cruze", false);
         Car car3 = new Car("Toyota", "Corolla", false);
-        Car car4 = new Car("Ford", "F150", true);
+        Car car4 = new Car("Ford", "F150", false);
         Car car5 = new Car("Nissan", "Altima", false);
 
         carStorage.addAll(List.of(new Car[]{car1, car2, car3, car4, car5}));
