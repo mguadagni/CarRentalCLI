@@ -51,6 +51,7 @@ public class RentalService {
             System.out.println("Bringing you back to the main menu...");
             mainMenu();
         } else {
+
             String selectedCar = availableCars.get(userSelection-1).getName();
             System.out.println("You are now renting the " + selectedCar);
             availableCars.get(userSelection-1).setRented(true);
@@ -73,8 +74,8 @@ public class RentalService {
 
     private static void mainMenu () {
         System.out.println("Would you like to...");
-        System.out.println("1) Rent");
-        System.out.println("2) Return");
+        System.out.println("1) Rent (" + getAvailableCars().size() + " cars available)");
+        System.out.println("2) Return (" + getRentedCars().size() + " cars available)");
         System.out.println("3) Exit the program");
 
         int mainMenuSelection = UI.readInt("",1, 3);
