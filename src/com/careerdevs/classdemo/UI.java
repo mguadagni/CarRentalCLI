@@ -9,21 +9,8 @@ public class UI {
 
     public static String readString (String question) {
         while (true) {
-            System.out.println(question + "\nConfirm (y/n):");
+            System.out.println(question + "\nInput: ");
             String inputString = scanner.nextLine();
-
-//            try {
-//                if (yesNoConfirm.equals("YES") || yesNoConfirm.equals("Yes") || yesNoConfirm.equals("yes") || yesNoConfirm.equals("y")) {
-//                    return yesNoConfirm;
-//                } else if (yesNoConfirm.equals("NO") || yesNoConfirm.equals("No") || yesNoConfirm.equals("no") || yesNoConfirm.equals("n")) {
-//                    return yesNoConfirm;
-//                } else {
-//                    System.out.println("You must enter yes or no!");
-//                }
-//            } catch (InputMismatchException e) {
-//                System.out.println("You must enter an integer, try again");
-//                scanner.nextLine();
-//            }
 
             if (!inputString.trim().equals("") ) {
                 return inputString.trim();

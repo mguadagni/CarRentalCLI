@@ -54,7 +54,8 @@ public class RentalService {
             String selectedCar = availableCars.get(userSelection-1).getName();
             boolean rentalConfirm = UI.yesOrNo("Are you sure you want to rent the " + selectedCar + "?");
             if (rentalConfirm) {
-                System.out.println("You are now renting the " + selectedCar);
+                String rentalName = UI.readString("Enter the name you would like to use for this rental");
+                System.out.println("You are now renting the " + selectedCar + ", " + rentalName);
                 availableCars.get(userSelection-1).setRented(true);
                 System.out.println("Now bringing you back to the main menu...\n");
                 mainMenu();
@@ -131,7 +132,8 @@ public class RentalService {
             String selectedCar = rentedCars.get(userSelection-1).getName();
             boolean returnConfirm = UI.yesOrNo("Are you sure you want to return the " + selectedCar + "?");
             if (returnConfirm) {
-                System.out.println("You have now returned the " + selectedCar);
+                String returnName = UI.readString("Enter the name you used to rent this car");
+                System.out.println("You have now returned the " + selectedCar + ", " + returnName);
                 rentedCars.get(userSelection - 1).setRented(false);
                 System.out.println("Now bringing you back to the main menu...\n");
                 mainMenu();
@@ -141,3 +143,4 @@ public class RentalService {
         }
     }
 }
+
