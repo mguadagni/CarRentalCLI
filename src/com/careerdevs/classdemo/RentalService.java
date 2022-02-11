@@ -1,7 +1,5 @@
 package com.careerdevs.classdemo;
 
-//import com.careerdevs.classdemo.Car;
-
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -47,16 +45,23 @@ public class RentalService {
 
         int userSelection = UI.readInt("Enter a number to select the car you'd like to rent. ", 1, availableCars.size() + 1);
 
+        UI.scanner.nextLine();
+
         if (userSelection == availableCars.size() + 1) {
             System.out.println("Bringing you back to the main menu...");
             mainMenu();
         } else {
-
             String selectedCar = availableCars.get(userSelection-1).getName();
-            System.out.println("You are now renting the " + selectedCar);
-            availableCars.get(userSelection-1).setRented(true);
-            System.out.println("Now bringing you back to the main menu...\n");
-            mainMenu();
+            boolean rentalConfirm = UI.yesOrNo("Are you sure you want to rent the " + selectedCar + "?");
+            if (rentalConfirm) {
+                System.out.println("You are now renting the " + selectedCar);
+                availableCars.get(userSelection-1).setRented(true);
+                System.out.println("Now bringing you back to the main menu...\n");
+                mainMenu();
+            } else {
+                rentalMenu();
+            }
+
         }
     }
 
@@ -101,7 +106,7 @@ public class RentalService {
     }
 
     private static ArrayList<Car> getRentedCars () {
-        return carStorage.stream().filter(car -> car.isRented()).collect(Collectors.toCollection(ArrayList::new));
+        return carStorage.stream().filter(Car::isRented).collect(Collectors.toCollection(ArrayList::new));
     }
 
     private static void returnMenu() {
@@ -117,15 +122,22 @@ public class RentalService {
 
         int userSelection = UI.readInt("Enter a number to select the car you'd like to return. ", 1, rentedCars.size() + 1);
 
+        UI.scanner.nextLine();
+
         if (userSelection == rentedCars.size() + 1) {
             System.out.println("Bringing you back to the main menu...");
             mainMenu();
         } else {
             String selectedCar = rentedCars.get(userSelection-1).getName();
-            System.out.println("You have now returned the " + selectedCar);
-            rentedCars.get(userSelection-1).setRented(false);
-            System.out.println("Now bringing you back to the main menu...\n");
-            mainMenu();
+            boolean returnConfirm = UI.yesOrNo("Are you sure you want to return the " + selectedCar + "?");
+            if (returnConfirm) {
+                System.out.println("You have now returned the " + selectedCar);
+                rentedCars.get(userSelection - 1).setRented(false);
+                System.out.println("Now bringing you back to the main menu...\n");
+                mainMenu();
+            } else {
+                returnMenu();
+            }
         }
     }
 }
