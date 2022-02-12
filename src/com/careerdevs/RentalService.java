@@ -55,6 +55,7 @@ public class RentalService {
             boolean rentalConfirm = UI.yesOrNo("Are you sure you want to rent the " + selectedCar + "?");
             if (rentalConfirm) {
                 String rentalName = UI.readString("Enter the name you would like to use for this rental");
+                availableCars.get(userSelection-1).setRentedName(rentalName);
                 System.out.println("You are now renting the " + selectedCar + ", " + rentalName);
                 availableCars.get(userSelection-1).setRented(true);
                 System.out.println("Now bringing you back to the main menu...\n");
@@ -69,11 +70,11 @@ public class RentalService {
     private static void initializeCarStorage () {
         carStorage = new ArrayList<>();
 
-        Car car1 = new Car("Honda", "Accord", false);
-        Car car2 = new Car("Chevy", "Cruze", true);
-        Car car3 = new Car("Toyota", "Corolla", false);
-        Car car4 = new Car("Ford", "F150", true);
-        Car car5 = new Car("Nissan", "Altima", false);
+        Car car1 = new Car("Honda", "Accord", false, " ", " ");
+        Car car2 = new Car("Chevy", "Cruze", true, "jeff", " ");
+        Car car3 = new Car("Toyota", "Corolla", false, " ", " ");
+        Car car4 = new Car("Ford", "F150", true, "erika", " ");
+        Car car5 = new Car("Nissan", "Altima", false, " ", " ");
 
         carStorage.addAll(List.of(new Car[]{car1, car2, car3, car4, car5}));
     }
@@ -133,6 +134,7 @@ public class RentalService {
             boolean returnConfirm = UI.yesOrNo("Are you sure you want to return the " + selectedCar + "?");
             if (returnConfirm) {
                 String returnName = UI.readString("Enter the name you used to rent this car");
+                rentedCars.get(userSelection-1).setReturnName(returnName);
                 System.out.println("You have now returned the " + selectedCar + ", " + returnName);
                 rentedCars.get(userSelection - 1).setRented(false);
                 System.out.println("Now bringing you back to the main menu...\n");
