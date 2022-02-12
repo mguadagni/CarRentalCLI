@@ -5,10 +5,10 @@ public class Car {
     private String model;
     private boolean isRented;
 
-    public Car(String make, String model) {
+    public Car(String make, String model, boolean isRented) {
         this.make = make;
         this.model = model;
-        this.isRented = false;
+        this.isRented = isRented;
     }
 
     public String getMake() {
