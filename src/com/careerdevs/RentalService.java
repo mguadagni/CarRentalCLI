@@ -70,8 +70,8 @@ public class RentalService {
     private static void initializeCarStorage () {
         carStorage = new ArrayList<>();
 
-        Car car1 = new Car("Honda", "Accord", false, " ", " ");
-        Car car2 = new Car("Chevy", "Cruze", true, "jeff", " ");
+        Car car1 = new Car("Honda", "Accord", true, "jeff", " ");
+        Car car2 = new Car("Chevy", "Cruze", false, " ", " ");
         Car car3 = new Car("Toyota", "Corolla", false, " ", " ");
         Car car4 = new Car("Ford", "F150", true, "erika", " ");
         Car car5 = new Car("Nissan", "Altima", false, " ", " ");
@@ -135,10 +135,21 @@ public class RentalService {
             if (returnConfirm) {
                 String returnName = UI.readString("Enter the name you used to rent this car");
                 rentedCars.get(userSelection-1).setReturnName(returnName);
-                System.out.println("You have now returned the " + selectedCar + ", " + returnName);
-                rentedCars.get(userSelection - 1).setRented(false);
-                System.out.println("Now bringing you back to the main menu...\n");
-                mainMenu();
+                //Checking if return name matches the rent name
+                for (int i = 0; i < getAvailableCars().size(); i++) {
+                    if (getAvailableCars().get(i) == getRentedCars().get(i)) {
+                        System.out.println("You have now returned the " + selectedCar + ", " + returnName);
+                        rentedCars.get(userSelection - 1).setRented(false);
+                        rentedCars.get(userSelection - 1).setReturnName("");
+                        System.out.println("Now bringing you back to the main menu...\n");
+                        mainMenu();
+                    } else {
+                        System.out.println("Incorrect Name.");
+                        System.out.println("Now bringing you back to the main menu...\n");
+                        mainMenu();
+                    }
+                }
+
             } else {
                 returnMenu();
             }
