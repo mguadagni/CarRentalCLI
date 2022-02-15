@@ -135,9 +135,7 @@ public class RentalService {
             if (returnConfirm) {
                 String returnName = UI.readString("Enter the name you used to rent this car");
                 rentedCars.get(userSelection-1).setReturnName(returnName);
-                //Checking if return name matches the rent name
-                for (int i = 0; i < getAvailableCars().size(); i++) {
-                    if (getAvailableCars().get(i) == getRentedCars().get(i)) {
+                    if (getRentedCars().get(userSelection-1).getRentedName().equals(getRentedCars().get(userSelection-1).getReturnName())) {
                         System.out.println("You have now returned the " + selectedCar + ", " + returnName);
                         rentedCars.get(userSelection - 1).setRented(false);
                         rentedCars.get(userSelection - 1).setReturnName("");
@@ -145,10 +143,29 @@ public class RentalService {
                         mainMenu();
                     } else {
                         System.out.println("Incorrect Name.");
-                        System.out.println("Now bringing you back to the main menu...\n");
-                        mainMenu();
+                        System.out.println("Would you like to...\n");
+                        System.out.println("1) Try again");
+                        System.out.println("2) Return to main menu");
+                        int returnCarError = UI.readInt(" ",1,2);
+                        if (returnCarError == 1) {
+                            while (true) {
+                                System.out.println("Please enter the correct name");
+                                String attemptedName = UI.scanner.nextLine();
+                                if (attemptedName.equals(getRentedCars().get(userSelection-1).getRentedName())) {
+                                    System.out.println("You have now returned the " + selectedCar + ", " + attemptedName);
+                                    rentedCars.get(userSelection - 1).setRented(false);
+                                    rentedCars.get(userSelection - 1).setReturnName("");
+                                    System.out.println("Now bringing you back to the main menu...\n");
+                                    mainMenu();
+                                    break;
+                                }
+
+                            }
+                        } else {
+                            System.out.println("Now bringing you back to the main menu...\n");
+                            mainMenu();
+                        }
                     }
-                }
 
             } else {
                 returnMenu();
