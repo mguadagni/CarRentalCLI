@@ -17,7 +17,6 @@ public class UI {
             }
             System.out.println("You must enter something!");
         }
-
     }
 
     public static int readInt (String question, int min, int max) {

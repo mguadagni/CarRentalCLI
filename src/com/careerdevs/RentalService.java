@@ -86,7 +86,7 @@ public class RentalService {
         System.out.println("3) Create a Car");
         System.out.println("4) Exit the program");
 
-        int mainMenuSelection = UI.readInt("",1, 3);
+        int mainMenuSelection = UI.readInt("",1, 4);
 
         if (mainMenuSelection == 1) {
             if (getAvailableCars().size() == 0) {
@@ -178,15 +178,21 @@ public class RentalService {
 
     private static void createACar() {
         System.out.println("Welcome to the Create A Car menu!");
-        String createMake = UI.readString("Enter the make of your desired car");
-        String createModel = UI.readString("Enter the model of your desired car");
+        String createMake = UI.readString("Enter the make of your desired car.");
+        String createModel = UI.readString("Enter the model of your desired car.");
         boolean confirmMakeModel = UI.yesOrNo(createMake + " " + createModel + "\nDoes this look correct?");
-        if (confirmMakeModel) {
-            Car car6 = new Car(createMake, createModel, false, "", "");
-            carStorage.add(car6);
-            System.out.println();
-        } else {
-
+        while (true) {
+            if (confirmMakeModel) {
+                Car car6 = new Car(createMake, createModel, false, "", "");
+                carStorage.add(car6);
+                System.out.println(carStorage.get(5).getName() + " is now available to rent. Thank you");
+                System.out.println("Returning to the main menu...");
+                mainMenu();
+                break;
+            } else {
+                System.out.println("Please restart.");
+                createACar();
+            }
         }
     }
 }
