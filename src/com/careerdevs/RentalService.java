@@ -2,6 +2,7 @@ package com.careerdevs;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Scanner;
 import java.util.stream.Collectors;
 
 public class RentalService {
@@ -12,7 +13,6 @@ public class RentalService {
         System.out.println("Welcome to Java Car Rentals!");
         initializeCarStorage();
         mainMenu();
-        System.out.println("Thank you for using the program, goodbye!");
     }
 
 //    private static ArrayList<Car> filterCars(boolean filterRented) {
@@ -88,6 +88,8 @@ public class RentalService {
 
         int mainMenuSelection = UI.readInt("",1, 4);
 
+        UI.scanner.nextLine();
+
         if (mainMenuSelection == 1) {
             if (getAvailableCars().size() == 0) {
                 System.out.println("Sorry, there are no available cars to rent.");
@@ -107,6 +109,9 @@ public class RentalService {
             }
         } else if (mainMenuSelection == 3) {
             createACar();
+        } else if (mainMenuSelection == 4) {
+            System.out.println("Thank you for using the program, goodbye!");
+            System.exit(0);
         }
     }
 
@@ -149,7 +154,8 @@ public class RentalService {
                         System.out.println("Would you like to...\n");
                         System.out.println("1) Try again");
                         System.out.println("2) Return to main menu");
-                        int returnCarError = UI.readInt(" ",1,2);
+                        int returnCarError = UI.readInt("",1,2);
+                        UI.scanner.nextLine();
                         if (returnCarError == 1) {
                             while (true) {
                                 System.out.println("Please enter the correct name");
