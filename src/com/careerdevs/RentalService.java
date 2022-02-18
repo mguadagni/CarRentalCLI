@@ -15,19 +15,6 @@ public class RentalService {
         mainMenu();
     }
 
-//    private static ArrayList<Car> filterCars(boolean filterRented) {
-//
-//        ArrayList<Car> filteredCars = new ArrayList<>();
-//        for (int i = 0; i < carStorage.size(); i++) {
-//            boolean keepCar = carStorage.get(i).isRented();
-//            if (filterRented) keepCar = !keepCar;
-//            if ( keepCar ) {
-//                filteredCars.add(carStorage.get(i));
-//            }
-//        }
-//        return filteredCars;
-//    }
-
     private static ArrayList<Car> getAvailableCars () {
         return carStorage.stream().filter(car -> !car.isRented()).collect(Collectors.toCollection(ArrayList::new));
     }
@@ -189,9 +176,9 @@ public class RentalService {
         boolean confirmMakeModel = UI.yesOrNo(createMake + " " + createModel + "\nDoes this look correct?");
         while (true) {
             if (confirmMakeModel) {
-                Car car6 = new Car(createMake, createModel, false, "", "");
-                carStorage.add(car6);
-                System.out.println(carStorage.get(5).getName() + " is now available to rent. Thank you");
+                Car newCars = new Car(createMake, createModel, false, "", "");
+                carStorage.add(newCars);
+                System.out.println(carStorage.get(carStorage.size()-1).getName() + " is now available to rent. Thank you");
                 System.out.println("Returning to the main menu...");
                 mainMenu();
                 break;
